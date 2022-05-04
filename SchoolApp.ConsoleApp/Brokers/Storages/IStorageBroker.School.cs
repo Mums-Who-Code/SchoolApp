@@ -8,6 +8,6 @@ namespace SchoolApp.ConsoleApp.Brokers.Storages
 {
     internal partial interface IStorageBroker
     {
-        School insertSchool(School school);
+        School InsertSchool(School school);
     }
 }
