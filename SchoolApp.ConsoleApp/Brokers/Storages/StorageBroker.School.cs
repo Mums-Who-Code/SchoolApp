@@ -10,6 +10,7 @@ namespace SchoolApp.ConsoleApp.Brokers.Storages
     internal partial class StorageBroker : IStorageBroker
     {
         List<School> Schools = new List<School>();
+
         public School InsertSchool(School school)
         {
             Schools.Add(school);
