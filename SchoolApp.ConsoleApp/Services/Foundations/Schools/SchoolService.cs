@@ -16,6 +16,6 @@ namespace SchoolApp.ConsoleApp.Services.Foundations.Schools
             this.storageBroker = storageBroker;
 
         public School AddSchool(School school) =>
-            throw new NotImplementedException();
-    }
+            this.storageBroker.InsertSchool(school);
+     }
 }

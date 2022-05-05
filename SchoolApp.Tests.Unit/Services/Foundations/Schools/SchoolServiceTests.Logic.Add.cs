@@ -3,6 +3,7 @@
 // ------------------------------------------------
 
 using FluentAssertions;
+using Force.DeepCloner;
 using Moq;
 using SchoolApp.ConsoleApp.Models.Schools;
 using Xunit;
@@ -17,8 +18,8 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
             //Given
             School randomSchool = CreateRandomSchool();
             School inputSchool = randomSchool;
-            School persistedSchool = inputSchool;
-            School expectedSchool = persistedSchool;
+            School persistedSchool = inputSchool; 
+            School expectedSchool = persistedSchool.DeepClone();
 
             this.storageBrokerMock.Setup(broker =>
             broker.InsertSchool(inputSchool))
