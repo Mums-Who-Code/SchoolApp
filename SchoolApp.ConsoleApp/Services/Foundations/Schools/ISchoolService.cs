@@ -4,10 +4,10 @@
 
 using SchoolApp.ConsoleApp.Models.Schools;
 
-namespace SchoolApp.ConsoleApp.Brokers.Storages
+namespace SchoolApp.ConsoleApp.Services.Foundations.Schools
 {
-    public partial interface IStorageBroker
+    public interface ISchoolService
     {
-        School InsertSchool(School school);
+        School AddSchool(School school);
     }
 }

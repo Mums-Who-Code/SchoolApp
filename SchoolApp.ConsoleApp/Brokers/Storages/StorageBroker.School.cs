@@ -7,7 +7,7 @@ using SchoolApp.ConsoleApp.Models.Schools;
 
 namespace SchoolApp.ConsoleApp.Brokers.Storages
 {
-    internal partial class StorageBroker : IStorageBroker
+    public partial class StorageBroker : IStorageBroker
     {
         List<School> Schools = new List<School>();
 
