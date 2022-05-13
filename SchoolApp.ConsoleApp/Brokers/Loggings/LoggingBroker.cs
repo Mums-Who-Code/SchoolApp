@@ -10,6 +10,7 @@ namespace SchoolApp.ConsoleApp.Brokers.Loggings
     internal class LoggingBroker : ILoggingBroker
     {
         public ILogger logger { get; set; }
+
         public LoggingBroker(ILogger<LoggingBroker> logger) =>
             this.logger = logger;
 
