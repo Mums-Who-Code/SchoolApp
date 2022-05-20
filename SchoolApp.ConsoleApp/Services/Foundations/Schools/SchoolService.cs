@@ -8,7 +8,7 @@ using SchoolApp.ConsoleApp.Models.Schools;
 
 namespace SchoolApp.ConsoleApp.Services.Foundations.Schools
 {
-    public class SchoolService : ISchoolService
+    public partial class SchoolService : ISchoolService
     {
         private readonly IStorageBroker storageBroker;
         private readonly ILoggingBroker loggingBroker;
@@ -22,6 +22,11 @@ namespace SchoolApp.ConsoleApp.Services.Foundations.Schools
         }
 
         public School AddSchool(School school) =>
-            this.storageBroker.InsertSchool(school);
+        TryCatch(() =>
+        {
+            ValidateSchool(school);
+
+            return this.storageBroker.InsertSchool(school);
+        });
     }
 }

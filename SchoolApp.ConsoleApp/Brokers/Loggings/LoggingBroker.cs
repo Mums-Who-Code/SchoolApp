@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace SchoolApp.ConsoleApp.Brokers.Loggings
 {
-    internal class LoggingBroker : ILoggingBroker
+    public class LoggingBroker : ILoggingBroker
     {
         public ILogger logger { get; set; }
 
