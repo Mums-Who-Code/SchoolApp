@@ -35,6 +35,7 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
             broker.InsertSchool(inputSchool), Times.Once);
 
             this.storageBrokerMock.VerifyNoOtherCalls();
+            this.loggingBrokerMock.VerifyNoOtherCalls();
         }
     }
 }
