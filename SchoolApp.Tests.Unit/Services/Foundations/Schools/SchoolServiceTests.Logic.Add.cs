@@ -18,7 +18,7 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
             //Given
             School randomSchool = CreateRandomSchool();
             School inputSchool = randomSchool;
-            School persistedSchool = inputSchool; 
+            School persistedSchool = inputSchool;
             School expectedSchool = persistedSchool.DeepClone();
 
             this.storageBrokerMock.Setup(broker =>
