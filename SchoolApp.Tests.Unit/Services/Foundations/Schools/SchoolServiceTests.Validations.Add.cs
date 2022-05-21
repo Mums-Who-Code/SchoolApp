@@ -3,7 +3,6 @@
 // ------------------------------------------------
 
 using System;
-using System.Threading.Tasks;
 using Moq;
 using SchoolApp.ConsoleApp.Models.Schools;
 using SchoolApp.ConsoleApp.Models.Schools.Exceptions;
@@ -14,7 +13,7 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
     public partial class SchoolServiceTests
     {
         [Fact]
-        public async Task ShouldThrowValidationExceptionOnAddIfSchoolIsNullAndLogIt()
+        public void ShouldThrowValidationExceptionOnAddIfSchoolIsNullAndLogIt()
         {
             //Given
             School nullSchool = null;
@@ -47,7 +46,7 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
         [InlineData(null)]
         [InlineData("")]
         [InlineData("    ")]
-        public async Task ShouldThrowValidationExceptionOnAddIfSchoolIsInvalidAndLogIt(
+        public void ShouldThrowValidationExceptionOnAddIfSchoolIsInvalidAndLogIt(
             string invalidText)
         {
             //Given
