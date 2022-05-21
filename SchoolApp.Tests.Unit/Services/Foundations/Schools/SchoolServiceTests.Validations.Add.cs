@@ -42,5 +42,54 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
             this.storageBrokerMock.VerifyNoOtherCalls();
             this.loggingBrokerMock.VerifyNoOtherCalls();
         }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData("    ")]
+        public async Task ShouldThrowValidationExceptionOnAddIfSchoolIsInvalidAndLogIt(
+            string invalidText)
+        {
+            //Given
+            School invalidSchool = new School
+            {
+                SchoolName = invalidText,
+                SchoolLocation = invalidText
+            };
+
+            var invalidSchoolException = new InvalidSchoolException();
+
+            invalidSchoolException.AddData(
+                key: nameof(School.SchoolId),
+                values: "School ID is invalid");
+
+            invalidSchoolException.AddData(
+                key: nameof(School.SchoolName),
+                values: "School Name is invalid");
+
+            invalidSchoolException.AddData(
+                key: nameof(School.SchoolLocation),
+                values: "School Location is invalid");
+
+            var expectedSchoolValidationException = new SchoolValidationException(invalidSchoolException);
+
+            //When
+            Action addSchoolAction = () => this.schoolService.AddSchool(invalidSchool);
+
+            //Then
+            Assert.Throws<SchoolValidationException>(addSchoolAction);
+
+            this.loggingBrokerMock.Verify(broker =>
+                broker.LogError(It.Is(SameExceptionAs(
+                    expectedSchoolValidationException))),
+                         Times.Once);
+
+            this.storageBrokerMock.Verify(broker =>
+                broker.InsertSchool(It.IsAny<School>()),
+                    Times.Never);
+
+            this.loggingBrokerMock.VerifyNoOtherCalls();
+            this.storageBrokerMock.VerifyNoOtherCalls();
+        }
     }
 }
