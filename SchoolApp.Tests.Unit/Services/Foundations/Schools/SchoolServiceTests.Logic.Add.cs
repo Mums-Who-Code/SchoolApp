@@ -32,7 +32,7 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
             actualSchool.Should().BeEquivalentTo(expectedSchool);
 
             this.storageBrokerMock.Verify(broker =>
-                broker.InsertSchool(inputSchool), 
+                broker.InsertSchool(inputSchool),
                     Times.Once);
 
             this.storageBrokerMock.VerifyNoOtherCalls();

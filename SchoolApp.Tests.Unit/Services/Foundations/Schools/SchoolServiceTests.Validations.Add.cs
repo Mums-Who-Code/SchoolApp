@@ -70,7 +70,7 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
                 key: nameof(School.SchoolLocation),
                 values: "Text is required.");
 
-            var expectedSchoolValidationException = 
+            var expectedSchoolValidationException =
                 new SchoolValidationException(invalidSchoolException);
 
             //When
