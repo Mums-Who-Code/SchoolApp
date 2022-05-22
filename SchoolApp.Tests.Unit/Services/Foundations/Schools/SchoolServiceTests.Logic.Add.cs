@@ -22,8 +22,8 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
             School expectedSchool = persistedSchool.DeepClone();
 
             this.storageBrokerMock.Setup(broker =>
-            broker.InsertSchool(inputSchool))
-                .Returns(persistedSchool);
+                broker.InsertSchool(inputSchool))
+                    .Returns(persistedSchool);
 
             //When
             School actualSchool = this.schoolService.AddSchool(inputSchool);
@@ -32,7 +32,8 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
             actualSchool.Should().BeEquivalentTo(expectedSchool);
 
             this.storageBrokerMock.Verify(broker =>
-            broker.InsertSchool(inputSchool), Times.Once);
+                broker.InsertSchool(inputSchool), 
+                    Times.Once);
 
             this.storageBrokerMock.VerifyNoOtherCalls();
             this.loggingBrokerMock.VerifyNoOtherCalls();

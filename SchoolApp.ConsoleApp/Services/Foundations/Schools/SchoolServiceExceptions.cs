@@ -22,6 +22,10 @@ namespace SchoolApp.ConsoleApp.Services.Foundations.Schools
             {
                 throw CreateAndLogValidationException(nullSchoolException);
             }
+            catch (InvalidSchoolException invalidSchoolException)
+            {
+                throw CreateAndLogValidationException(invalidSchoolException);
+            }
         }
 
         private SchoolValidationException CreateAndLogValidationException(Xeption exception)

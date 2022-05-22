@@ -20,16 +20,17 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
         private readonly Mock<ILoggingBroker> loggingBrokerMock;
         private readonly ISchoolService schoolService;
 
-        public SchoolServiceTests()
+        public  SchoolServiceTests()
         {
             this.storageBrokerMock = new Mock<IStorageBroker>();
             this.loggingBrokerMock = new Mock<ILoggingBroker>();
+            
             this.schoolService = new SchoolService(
                 storageBroker: this.storageBrokerMock.Object,
                 loggingBroker: this.loggingBrokerMock.Object);
         }
 
-        private Expression<Func<Exception, bool>> SameExceptionAs(Xeption expectedException)
+        private static Expression<Func<Xeption, bool>> SameExceptionAs(Xeption expectedException)
         {
             return actualException =>
                 actualException.Message == expectedException.Message

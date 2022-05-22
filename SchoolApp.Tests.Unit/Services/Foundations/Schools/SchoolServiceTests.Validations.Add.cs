@@ -60,17 +60,18 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
 
             invalidSchoolException.AddData(
                 key: nameof(School.SchoolId),
-                values: "School ID is invalid");
+                values: "ID is required.");
 
             invalidSchoolException.AddData(
                 key: nameof(School.SchoolName),
-                values: "School Name is invalid");
+                values: "Text is required.");
 
             invalidSchoolException.AddData(
                 key: nameof(School.SchoolLocation),
-                values: "School Location is invalid");
+                values: "Text is required.");
 
-            var expectedSchoolValidationException = new SchoolValidationException(invalidSchoolException);
+            var expectedSchoolValidationException = 
+                new SchoolValidationException(invalidSchoolException);
 
             //When
             Action addSchoolAction = () => this.schoolService.AddSchool(invalidSchool);
