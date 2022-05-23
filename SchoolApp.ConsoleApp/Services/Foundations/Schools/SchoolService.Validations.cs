@@ -16,12 +16,13 @@ namespace SchoolApp.ConsoleApp.Services.Foundations.Schools
 
             Validate(
                 (Rule: IsInvalid(school.SchoolId), Parameter: nameof(School.SchoolId)),
-                (Rule: IsInvalid(school.SchoolName), Parameter: nameof(School.SchoolName)),
-                (Rule: IsInvalid(school.SchoolLocation), Parameter: nameof(School.SchoolLocation)));
+                (Rule: IsInvalid(text: school.SchoolName), Parameter: nameof(School.SchoolName)),
+                (Rule: IsInvalid(text: school.SchoolLocation), Parameter: nameof(School.SchoolLocation)));
         }
 
         private static void ValidateInput(int SchoolId) =>
             Validate((Rule: IsInvalid(SchoolId), Parameter: nameof(School.SchoolId)));
+
         private static dynamic IsInvalid(int SchoolId) => new
         {
             Condition = SchoolId == default,

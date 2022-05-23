@@ -15,18 +15,17 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
         [Fact]
         public void ShouldThrowValidationExceptionOnAddIfSchoolIsNullAndLogIt()
         {
-            //Given
+            //given
             School nullSchool = null;
             var nullSchoolException = new NullSchoolException();
 
             var expectedSchoolValidationException =
                 new SchoolValidationException(nullSchoolException);
 
-
-            //When
+            //when
             Action addSchoolAction = () => this.schoolService.AddSchool(nullSchool);
 
-            //Then
+            //then
             Assert.Throws<SchoolValidationException>(addSchoolAction);
 
             this.loggingBrokerMock.Verify(broker =>
@@ -49,8 +48,8 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
         public void ShouldThrowValidationExceptionOnAddIfSchoolIsInvalidAndLogIt(
             string invalidText)
         {
-            //Given
-            School invalidSchool = new School
+            //given
+            var invalidSchool = new School
             {
                 SchoolName = invalidText,
                 SchoolLocation = invalidText
@@ -73,10 +72,10 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
             var expectedSchoolValidationException =
                 new SchoolValidationException(invalidSchoolException);
 
-            //When
+            //when
             Action addSchoolAction = () => this.schoolService.AddSchool(invalidSchool);
 
-            //Then
+            //then
             Assert.Throws<SchoolValidationException>(addSchoolAction);
 
             this.loggingBrokerMock.Verify(broker =>

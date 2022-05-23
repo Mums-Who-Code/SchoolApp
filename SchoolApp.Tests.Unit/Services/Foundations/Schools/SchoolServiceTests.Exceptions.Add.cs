@@ -28,7 +28,7 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
 
             this.storageBrokerMock.Setup(broker =>
                 broker.InsertSchool(It.IsAny<School>()))
-                .Throws(serviceException);
+                    .Throws(serviceException);
 
             //when
             Action addSchoolAction = () => this.schoolService.AddSchool(someSchool);
@@ -43,7 +43,7 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
             this.loggingBrokerMock.Verify(broker =>
                 broker.LogError(It.Is(SameExceptionAs(
                     expectedSchoolServiceException))),
-                    Times.Once);
+                        Times.Once);
 
             this.storageBrokerMock.VerifyNoOtherCalls();
             this.loggingBrokerMock.VerifyNoOtherCalls();

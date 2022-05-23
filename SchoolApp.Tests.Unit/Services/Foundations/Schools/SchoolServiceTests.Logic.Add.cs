@@ -15,7 +15,7 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
         [Fact]
         public void ShouldAddSchool()
         {
-            //Given
+            //given
             School randomSchool = CreateRandomSchool();
             School inputSchool = randomSchool;
             School persistedSchool = inputSchool;
@@ -25,10 +25,10 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
                 broker.InsertSchool(inputSchool))
                     .Returns(persistedSchool);
 
-            //When
+            //when
             School actualSchool = this.schoolService.AddSchool(inputSchool);
 
-            //Then
+            //then
             actualSchool.Should().BeEquivalentTo(expectedSchool);
 
             this.storageBrokerMock.Verify(broker =>
