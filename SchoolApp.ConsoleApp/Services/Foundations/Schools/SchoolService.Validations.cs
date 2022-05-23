@@ -20,16 +20,18 @@ namespace SchoolApp.ConsoleApp.Services.Foundations.Schools
                 (Rule: IsInvalid(school.SchoolLocation), Parameter: nameof(School.SchoolLocation)));
         }
 
+        private static void ValidateInput(int SchoolId) =>
+            Validate((Rule: IsInvalid(SchoolId), Parameter: nameof(School.SchoolId)));
         private static dynamic IsInvalid(int SchoolId) => new
         {
             Condition = SchoolId == default,
-            Message = "Id is required."
+            Message = "ID is required."
         };
 
         private static dynamic IsInvalid(string text) => new
         {
             Condition = String.IsNullOrWhiteSpace(text),
-            Message = "text is required."
+            Message = "Text is required."
         };
 
         private static void ValidateSchoolIsNotNull(School school)
@@ -50,7 +52,7 @@ namespace SchoolApp.ConsoleApp.Services.Foundations.Schools
                 {
                     invalidSchoolException.UpsertDataList(
                         key: parameter,
-                        value: rule.message);
+                        value: rule.Message);
                 }
             }
 
