@@ -10,7 +10,7 @@ namespace SchoolApp.ConsoleApp.Models.Schools.Exceptions
     public class FailedSchoolServiceException : Xeption
     {
         public FailedSchoolServiceException(Exception innerException)
-            : base(message: "Failed school service error occured,contact support.",
+            : base(message: "Failed school service error occurred, contact support.",
                   innerException)
         { }
     }
