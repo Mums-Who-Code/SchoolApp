@@ -9,7 +9,7 @@ namespace SchoolApp.ConsoleApp.Models.Schools.Exceptions
     public class SchoolServiceException : Xeption
     {
         public SchoolServiceException(Xeption innerException)
-            : base(message: "Sample serivce error occurred, contact support.",
+            : base(message: "School serivce error occurred, contact support.",
                   innerException)
         { }
     }
