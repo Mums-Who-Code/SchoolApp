@@ -17,5 +17,7 @@ namespace SchoolApp.ConsoleApp.Brokers.Storages
 
             return school;
         }
+
+        public List<School> SelectAllSchools() => Schools;
     }
 }
