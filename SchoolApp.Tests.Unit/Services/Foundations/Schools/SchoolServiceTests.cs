@@ -3,6 +3,8 @@
 // ------------------------------------------------
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using Moq;
 using SchoolApp.ConsoleApp.Brokers.Loggings;
@@ -37,6 +39,12 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
                 && actualException.InnerException.Message == expectedException.InnerException.Message
                 && (actualException.InnerException as Xeption).DataEquals(expectedException.InnerException.Data);
         }
+
+        private static int GetRandomNumber() =>
+            new IntRange(min: 2, max: 10).GetValue();
+
+        private static List<School> CreateRandomSchools() =>
+            CreateSchoolFiller().Create(count: GetRandomNumber()).ToList();
 
         private static School CreateRandomSchool() =>
             CreateSchoolFiller().Create();
