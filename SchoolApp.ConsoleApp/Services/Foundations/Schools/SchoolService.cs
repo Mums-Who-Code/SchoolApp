@@ -31,6 +31,9 @@ namespace SchoolApp.ConsoleApp.Services.Foundations.Schools
         });
 
         public List<School> RetrieveAllSchools() =>
-            this.storageBroker.SelectAllSchools();
+        TryCatch(() =>
+        {
+            return this.storageBroker.SelectAllSchools();
+        });
     }
 }
