@@ -31,6 +31,6 @@ namespace SchoolApp.ConsoleApp.Services.Foundations.Schools
         });
 
         public List<School> RetrieveAllSchools() =>
-            throw new System.NotImplementedException();
+            this.storageBroker.SelectAllSchools();
     }
 }
