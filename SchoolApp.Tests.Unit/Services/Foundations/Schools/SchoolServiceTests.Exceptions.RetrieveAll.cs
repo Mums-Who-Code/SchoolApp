@@ -28,7 +28,8 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
                     .Throws(serviceException);
 
             //when
-            Action retrieveAllAction = () => this.schoolService.RetrieveAllSchools();
+            Action retrieveAllAction = () =>
+                this.schoolService.RetrieveAllSchools();
 
             //then
             Assert.Throws<SchoolServiceException>(retrieveAllAction);
