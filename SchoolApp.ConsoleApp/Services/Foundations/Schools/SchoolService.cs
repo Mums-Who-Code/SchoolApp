@@ -2,6 +2,7 @@
 // Copyright (c) MumsWhoCode. All rights reserved.
 // ------------------------------------------------
 
+using System.Collections.Generic;
 using SchoolApp.ConsoleApp.Brokers.Loggings;
 using SchoolApp.ConsoleApp.Brokers.Storages;
 using SchoolApp.ConsoleApp.Models.Schools;
@@ -27,6 +28,12 @@ namespace SchoolApp.ConsoleApp.Services.Foundations.Schools
             ValidateSchool(school);
 
             return this.storageBroker.InsertSchool(school);
+        });
+
+        public List<School> RetrieveAllSchools() =>
+        TryCatch(() =>
+        {
+            return this.storageBroker.SelectAllSchools();
         });
     }
 }

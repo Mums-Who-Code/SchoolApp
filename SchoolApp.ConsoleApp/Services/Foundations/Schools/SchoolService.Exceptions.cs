@@ -3,6 +3,7 @@
 // ------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using SchoolApp.ConsoleApp.Models.Schools;
 using SchoolApp.ConsoleApp.Models.Schools.Exceptions;
 using Xeptions;
@@ -12,6 +13,7 @@ namespace SchoolApp.ConsoleApp.Services.Foundations.Schools
     public partial class SchoolService
     {
         private delegate School ReturningSchoolFunction();
+        private delegate List<School> ReturningSchoolsFunction();
 
         private School TryCatch(ReturningSchoolFunction returningSchoolFunction)
         {
@@ -33,6 +35,22 @@ namespace SchoolApp.ConsoleApp.Services.Foundations.Schools
                     new FailedSchoolServiceException(exception);
 
                 throw CreateAndLogServiceException(failedSchoolServiceException);
+            }
+        }
+
+        private List<School> TryCatch(ReturningSchoolsFunction returningSchoolsFunction)
+        {
+            try
+            {
+                return returningSchoolsFunction();
+            }
+            catch (Exception exception)
+            {
+                var failedSchoolServiceException =
+                    new FailedSchoolServiceException(exception);
+
+                throw CreateAndLogServiceException(
+                    failedSchoolServiceException);
             }
         }
 
