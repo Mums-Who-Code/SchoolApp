@@ -19,5 +19,8 @@ namespace SchoolApp.ConsoleApp.Brokers.Storages
         }
 
         public List<School> SelectAllSchools() => Schools;
+
+        public School SelectSchoolById(int schoolId) =>
+            Schools.Find(school => school.SchoolId == schoolId);
     }
 }
