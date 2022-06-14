@@ -2,6 +2,7 @@
 // Copyright (c) MumsWhoCode. All rights reserved.
 // ------------------------------------------------
 
+using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
 using SchoolApp.ConsoleApp.Brokers.Loggings;
 using SchoolApp.ConsoleApp.Brokers.Storages;
@@ -28,6 +29,16 @@ namespace SchoolApp.ConsoleApp
             };
 
             schoolService.AddSchool(inputSchool);
+
+            inputSchool = new School
+            {
+                SchoolId = 1236,
+                SchoolName = "Elementary School",
+                SchoolLocation = "US"
+            };
+
+            schoolService.AddSchool(inputSchool);
+            List<School> storedSchools = schoolService.RetrieveAllSchools();
         }
     }
 }
