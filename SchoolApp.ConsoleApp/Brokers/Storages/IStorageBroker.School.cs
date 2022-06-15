@@ -11,5 +11,6 @@ namespace SchoolApp.ConsoleApp.Brokers.Storages
     {
         School InsertSchool(School school);
         List<School> SelectAllSchools();
+        School SelectSchoolById(int schoolId);
     }
 }
