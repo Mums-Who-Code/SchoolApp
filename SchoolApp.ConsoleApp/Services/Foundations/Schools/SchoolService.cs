@@ -36,7 +36,7 @@ namespace SchoolApp.ConsoleApp.Services.Foundations.Schools
             return this.storageBroker.SelectAllSchools();
         });
 
-        public School RetrieveSchoolById(int id) =>
-            throw new System.NotImplementedException();
+        public School RetrieveSchoolById(int schoolID) =>
+            this.storageBroker.SelectSchoolById(schoolID);
     }
 }
