@@ -16,7 +16,7 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
         public void ShouldThrowValidationExceptionOnRetrieveByIdIfIdIsInvalidAndLogIt()
         {
             //given
-            var invalidSchool = new School();
+            int invalidId = default;
             var invalidSchoolException = new InvalidSchoolException();
 
             invalidSchoolException.AddData(
@@ -28,7 +28,7 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
 
             //when
             Action retrieveSchoolByIdAction = () =>
-                this.schoolService.RetrieveSchoolById(invalidSchool.SchoolId);
+                this.schoolService.RetrieveSchoolById(invalidId);
 
             //then
             Assert.Throws<SchoolValidationException>(retrieveSchoolByIdAction);
