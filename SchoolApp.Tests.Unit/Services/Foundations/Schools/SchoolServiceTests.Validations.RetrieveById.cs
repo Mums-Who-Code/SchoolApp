@@ -21,13 +21,13 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
 
             invalidSchoolException.AddData(
                 key: nameof(School.SchoolId),
-                values: "ID is required");
+                values: "ID is required.");
 
             var expectedSchoolValidationException =
                 new SchoolValidationException(invalidSchoolException);
 
             //when
-            Action retrieveSchoolByIdAction = () => 
+            Action retrieveSchoolByIdAction = () =>
                 this.schoolService.RetrieveSchoolById(invalidSchool.SchoolId);
 
             //then
