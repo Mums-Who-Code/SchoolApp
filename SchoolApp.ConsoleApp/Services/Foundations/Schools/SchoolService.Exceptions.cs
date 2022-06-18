@@ -29,6 +29,14 @@ namespace SchoolApp.ConsoleApp.Services.Foundations.Schools
             {
                 throw CreateAndLogValidationException(invalidSchoolException);
             }
+            catch (ArgumentNullException argumentNullException)
+            {
+                var nullargumentSchoolException =
+                    new NullArgumentSchoolException(argumentNullException);
+
+                throw CreateAndLogDependencyValidationException(
+                    nullargumentSchoolException);
+            }
             catch (Exception exception)
             {
                 var failedSchoolServiceException =
@@ -60,6 +68,16 @@ namespace SchoolApp.ConsoleApp.Services.Foundations.Schools
             this.loggingBroker.LogError(schoolValidationException);
 
             return schoolValidationException;
+        }
+
+        private SchoolDependencyValidationException CreateAndLogDependencyValidationException(Xeption exception)
+        {
+            var schoolDependencyValidationException =
+                new SchoolDependencyValidationException(exception);
+
+            this.loggingBroker.LogError(schoolDependencyValidationException);
+
+            return schoolDependencyValidationException;
         }
 
         private SchoolServiceException CreateAndLogServiceException(Xeption exception)
