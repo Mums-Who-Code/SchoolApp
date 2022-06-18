@@ -48,5 +48,42 @@ namespace SchoolApp.Tests.Unit.Services.Foundations.Schools
             this.storageBrokerMock.VerifyNoOtherCalls();
             this.loggingBrokerMock.VerifyNoOtherCalls();
         }
+
+        [Fact]
+        public void ShouldThrowServiceExceptionOnRetrieveByIdIfServiceErrorOccursAndLogIt()
+        {
+            //given
+            int someSchoolId = GetRandomNumber();
+            var serviceException = new Exception();
+
+            var failedSchoolServiceException =
+                new FailedSchoolServiceException(serviceException);
+
+            var expectedSchoolServiceException =
+                new SchoolServiceException(failedSchoolServiceException);
+
+            this.storageBrokerMock.Setup(broker =>
+                broker.SelectSchoolById(It.IsAny<int>()))
+                    .Throws(serviceException);
+
+            //when
+            Action retrieveSchoolByIdAction = () =>
+                this.schoolService.RetrieveSchoolById(someSchoolId);
+
+            //then
+            Assert.Throws<SchoolServiceException>(retrieveSchoolByIdAction);
+
+            this.storageBrokerMock.Verify(broker =>
+                broker.SelectSchoolById(It.IsAny<int>()),
+                    Times.Once);
+
+            this.loggingBrokerMock.Verify(broker =>
+                broker.LogError(It.Is(SameExceptionAs(
+                    expectedSchoolServiceException))),
+                        Times.Once);
+
+            this.storageBrokerMock.VerifyNoOtherCalls();
+            this.loggingBrokerMock.VerifyNoOtherCalls();
+        }
     }
 }
