@@ -56,7 +56,7 @@ namespace SchoolApp.ConsoleApp.Services.Foundations.Schools
                         value: rule.Message);
                 }
             }
-
+            
             invalidSchoolException.ThrowIfContainsErrors();
         }
     }
