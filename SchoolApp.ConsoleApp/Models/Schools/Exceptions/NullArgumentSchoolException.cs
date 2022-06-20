@@ -10,7 +10,7 @@ namespace SchoolApp.ConsoleApp.Models.Schools.Exceptions
     public class NullArgumentSchoolException : Xeption
     {
         public NullArgumentSchoolException(Exception innerException)
-            : base(message: "Null arguement school error occured,fix the errors and try again.",
+            : base(message: "Null arguement school error occurred,fix the errors and try again.",
                   innerException)
         { }
     }
