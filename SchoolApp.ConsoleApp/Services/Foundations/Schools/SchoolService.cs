@@ -35,5 +35,13 @@ namespace SchoolApp.ConsoleApp.Services.Foundations.Schools
         {
             return this.storageBroker.SelectAllSchools();
         });
+
+        public School RetrieveSchoolById(int schoolID) =>
+        TryCatch(() =>
+        {
+            ValidateInput(schoolID);
+
+            return this.storageBroker.SelectSchoolById(schoolID);
+        });
     }
 }

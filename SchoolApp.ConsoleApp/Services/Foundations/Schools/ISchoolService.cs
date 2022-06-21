@@ -11,5 +11,6 @@ namespace SchoolApp.ConsoleApp.Services.Foundations.Schools
     {
         School AddSchool(School school);
         List<School> RetrieveAllSchools();
+        School RetrieveSchoolById(int id);
     }
 }
