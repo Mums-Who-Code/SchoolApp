@@ -39,6 +39,7 @@ namespace SchoolApp.ConsoleApp
 
             schoolService.AddSchool(inputSchool);
             List<School> storedSchools = schoolService.RetrieveAllSchools();
+            School returningSchool = schoolService.RetrieveSchoolById(123);
         }
     }
 }
