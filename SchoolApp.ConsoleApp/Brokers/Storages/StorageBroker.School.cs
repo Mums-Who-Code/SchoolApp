@@ -22,5 +22,13 @@ namespace SchoolApp.ConsoleApp.Brokers.Storages
 
         public School SelectSchoolById(int schoolId) =>
             Schools.Find(school => school.SchoolId == schoolId);
+
+        public School UpdateSchool(School inputSchool)
+        {
+            Schools.RemoveAll(school => school.SchoolId == inputSchool.SchoolId);
+            Schools.Add(inputSchool);
+
+            return inputSchool;
+        }
     }
 }
